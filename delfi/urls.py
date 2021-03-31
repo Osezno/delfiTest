@@ -17,8 +17,11 @@ from django.contrib import admin
 from django.urls import path
 from delfito import delfiview as delfi_view
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('delfi/', delfi_view.start )
+    path('delfi/', delfi_view.start_function )
    # path('delfi/', admin.site.urls),
-]
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

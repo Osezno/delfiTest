@@ -13,7 +13,10 @@ warnings.filterwarnings('ignore')
 import speech_recognition as sr
 import nltk
 from nltk.stem import WordNetLemmatizer
-
+from django.http import HttpResponse
+import datetime
+from django.template import RequestContext, Template, Context
+from django.template.loader import get_template, render_to_string
 # for downloading package files can be commented after First run
 # nltk.download('popular', quiet=True)
 # nltk.download('nps_chat', quiet=True)
@@ -153,8 +156,20 @@ def response(user_response):
         # python -m pip install Django
 
 def start(request):
-    # Recording voice input using microphone
-    print("start")
+    #start_template(request)
+    start_function()
+   
+
+def start_template(request):
+     # Recording voice input using microphone
+    start_function()
+    now = datetime.datetime.now()
+    html = render_to_string('main/main.html', using=None)
+    # html = "<html><body>It is now %s.</body></html>" % now
+    return HttpResponse(html)
+
+def start_function():
+   
     file = "file.mp3"
     flag = True
     fst = "Hello, my name is Delphito and I'm your Personalized Artificial Intelligence. I'm developed by Enrique Frese Arroyo."
@@ -195,3 +210,5 @@ def start(request):
         else:
             flag = False
             prYellow("Delphi: Bye! take care..")
+            
+    
