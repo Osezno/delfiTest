@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from delfito import delfiview as delfi_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('delfi/', delfi_view.start )
+   # path('delfi/', admin.site.urls),
 ]
