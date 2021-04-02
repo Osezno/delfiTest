@@ -157,18 +157,15 @@ def response(user_response):
 
 def start(request):
     #start_template(request)
-    start_function()
-   
-
-def start_template(request):
-     # Recording voice input using microphone
-    start_function()
-    now = datetime.datetime.now()
     html = render_to_string('main/main.html', using=None)
     # html = "<html><body>It is now %s.</body></html>" % now
     return HttpResponse(html)
 
-def start_function():
+   
+
+
+
+def start_function(request):
    
     file = "file.mp3"
     flag = True

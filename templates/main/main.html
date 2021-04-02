@@ -18,36 +18,110 @@
   <body >
  <h2>TEST</h2>
 <!-- <img src="delfiLogo.png" > -->
-  <!-- </body>
-</html> --> 
+<!-- </body>
+</html> -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <title>DELFI</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <style>
-    html{background-color: #31c7f5;}
-    body{ padding:0}
-    .container{
-     background-color:#31c7f5 ;
-     height: 100vh;
+    html {
+      background-color: #56c1ff;
     }
-    .text{
-      color:#fff
-    }
-    .img{
 
-      width: 100%;
+    body {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    @keyframes fromBottom {
+      from {
+
+        opacity: 0;
+
+      }
+
+      to {
+
+        opacity: 100;
+
+      }
+    }
+
+    .container {
+      background-color: #56c1ff;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .text {
+      color: #fff
+    }
+
+    .img {
+
+      width: 500px;
       max-height: 100%;
+      animation-name: fromBottom;
+      animation-duration: 4s;
 
     }
-    </style>
+
+    .btn {
+      width: 238px;
+      color: #fff;
+      max-height: 50px;
+      display: block;
+      margin: 0 auto;
+      border: none;
+      cursor: pointer;
+      padding: 10px;
+      background: #0276ba;
+      border-radius: 30px;
+      box-shadow: 1px 2px 1px 0px #2c827245;
+    }
+
+    .btn:hover {
+
+      background: #0c5f90;
+
+    }
+  </style>
 </head>
 
 <body>
-    <div class="container">
-         {% load static %}
-        <img class="img" src="https://i.ibb.co/tprzbvG/delfi-Logo.png" />
-     
-     </div>
+  <div class="container">
+    {% load static %}
+    <div class="wrap">
+      <img class="img" src="https://i.ibb.co/QkZgKFp/Delphi-Logo.png" />
+      <!-- <form action="{% url 'start' %}" method="post"> -->
+      <button id="btnText" class="btn" type="submit" name='mybtn2' onclick='runDelfi()'>{{btnText |default:"Start"}}
+      </button>
+      <!-- </form> -->
+    </div>
+
+  </div>
 </body>
+
+<script type="text/javascript">
+  let running = false;
+  const runDelfi = () => {
+    if (!running) {
+      document.getElementById("btnText").innerHTML = "Delfi Running";
+      $.ajax({
+        url: 'start', //The URL you defined in urls.py
+      });
+      running = !running
+    } else {
+      document.getElementById("btnText").innerHTML = "Start";
+      running = !running
+    }
+  }
+</script>
+
 </html>
