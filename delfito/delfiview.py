@@ -17,11 +17,11 @@ from django.http import HttpResponse
 import datetime
 from django.template import RequestContext, Template, Context
 from django.template.loader import get_template, render_to_string
-# for downloading package files can be commented after First run
-# nltk.download('popular', quiet=True)
-# nltk.download('nps_chat', quiet=True)
-# nltk.download('punkt')
-# nltk.download('wordnet')
+#for downloading package files can be commented after First run
+nltk.download('popular', quiet=True)
+nltk.download('nps_chat', quiet=True)
+nltk.download('punkt')
+nltk.download('wordnet')
 
 posts = nltk.corpus.nps_chat.xml_posts()[:10000]
 

@@ -28,7 +28,7 @@ SECRET_KEY = 'x_x_vjp$1f2rjrm-^@n#f$5z_lmpynek3*vw+am^1&%bakq795'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["https://avian-cogency-309917.uc.r.appspot.com",  'avian-cogency-309917.uc.r.appspot.com']
 
 
 # Application definition

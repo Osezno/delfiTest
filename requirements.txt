@@ -1,0 +1,14 @@
+Django>=3.0,<4.0
+gunicorn==19.3.0
+#portaudio19-dev
+#python-all-dev
+#python3-all-dev
+mpg123
+numpy
+sklearn
+gtts
+#PyAudio
+speech-recognition
+nltk
+
+
