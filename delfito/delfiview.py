@@ -10,6 +10,11 @@ from gtts import gTTS
 import os
 from django.http.response import JsonResponse
 warnings.filterwarnings('ignore')
+# Imports the Google Cloud client library
+from google.cloud import speech
+
+# Instantiates a client
+
 import speech_recognition as sr
 import nltk
 from nltk.stem import WordNetLemmatizer
@@ -26,7 +31,6 @@ nltk.download('wordnet')
 posts = nltk.corpus.nps_chat.xml_posts()[:10000]
 
 
-# To Recognise input type as QUES.
 
     
 def dialogue_act_features(post):
@@ -162,7 +166,24 @@ def start(request):
     return HttpResponse(html)
 
    
-
+def other(request):
+    # To Recognise input type as QUES.
+    client = speech.SpeechClient()
+    # The name of the audio file to transcribe
+    gcs_uri = "gs://cloud-samples-data/speech/brooklyn_bridge.raw"
+    
+    audio = speech.RecognitionAudio(uri=gcs_uri)
+    
+    config = speech.RecognitionConfig(
+        encoding=speech.RecognitionConfig.AudioEncoding.LINEAR16,
+        sample_rate_hertz=16000,
+        language_code="en-US",
+        )
+    # Detects speech in the audio file
+    response = client.recognize(config=config, audio=audio)
+    
+    for result in response.results:
+        print("Transcript: {}".format(result.alternatives[0].transcript))
 
 
 def start_function(request):

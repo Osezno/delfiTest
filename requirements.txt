@@ -7,8 +7,9 @@ mpg123
 numpy
 sklearn
 gtts
+#pyaudio
 #PyAudio
-speech-recognition
+SpeechRecognition
 nltk
 
 

@@ -22,7 +22,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('delfi/', delfi_view.start ),
-    path('delfi/start', delfi_view.start_function, name="start")
+    path('', delfi_view.start ),
+    path('start', delfi_view.other, name="start")
    # path('delfi/', admin.site.urls),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
